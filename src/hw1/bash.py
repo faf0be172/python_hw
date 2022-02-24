@@ -29,8 +29,8 @@ def nl(filename, separator="  ", tabs=1):
     with open(filename, "r") as file:
         rows = file.readlines()
         print(
-            *['\t' * tabs + str(number + 1) + separator + row.strip()
-              for (number, row) in zip(range(len(rows)), rows)], sep="\n"
+            *['\t' * tabs + str(number + 1) + separator + row.strip() for (number, row) in zip(range(len(rows)), rows)],
+            sep="\n"
         )
 
 

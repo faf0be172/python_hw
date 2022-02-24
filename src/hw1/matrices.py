@@ -14,9 +14,9 @@ def get_transpose(matrix):
     if validate_matrix(matrix):
         transposed_matrix = list(zip(*matrix))
         assert validate_matrix(transposed_matrix), "Result is not a matrix"
-        assert (len(transposed_matrix) == len(matrix[0]) and
-                len(transposed_matrix[0]) == len(matrix)
-                ), "Result matrix dimension is invalid"
+        assert len(transposed_matrix) == len(matrix[0]) and len(transposed_matrix[0]) == len(
+            matrix
+        ), "Result matrix dimension is invalid"
         return transposed_matrix
     else:
         raise TypeError("Matrix is invalid")
@@ -31,9 +31,9 @@ def get_matrices_sum(matrix_a, matrix_b):
                 raise TypeError("Values inside could not be multiplied") from error
 
             assert validate_matrix(result), "Result is not a matrix"
-            assert (len(result) == len(matrix_a) and
-                    len(result[0]) == len(matrix_a[0])
-                    ), "Result matrix dimension is invalid"
+            assert len(result) == len(matrix_a) and len(result[0]) == len(
+                matrix_a[0]
+            ), "Result matrix dimension is invalid"
             return result
         else:
             raise IndexError("Matrices dimensions are not equal")
@@ -53,9 +53,7 @@ def get_matrices_product(matrix_a, matrix_b):
             raise TypeError("Values inside could not be multiplied") from error
 
         assert validate_matrix(result), "Result is not a matrix"
-        assert (len(result) == len(matrix_a) and
-                len(result[0]) == len(matrix_b[0])
-                ), "Result matrix dimension is invalid"
+        assert len(result) == len(matrix_a) and len(result[0]) == len(matrix_b[0]), "Result matrix dimension is invalid"
         return result
 
 

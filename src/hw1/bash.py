@@ -28,8 +28,10 @@ def nl(filename, separator="  ", tabs=1):
 
     with open(filename, "r") as file:
         rows = file.readlines()
-        print(*['\t' * tabs + str(number + 1) + separator + row.strip()
-                for (number, row) in zip(range(len(rows)), rows)], sep="\n")
+        print(
+            *['\t' * tabs + str(number + 1) + separator + row.strip()
+              for (number, row) in zip(range(len(rows)), rows)], sep="\n"
+        )
 
 
 def wc(filename, rows=True, words=True, symbols=True):
@@ -62,11 +64,11 @@ def wc(filename, rows=True, words=True, symbols=True):
             print("Rows: {}".format(rows_number))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     head("text.txt", 3)
     print()
     tail("text.txt", 3)
     print()
-    nl("text.txt", separator='. ')
+    nl("text.txt", separator=". ")
     print()
     wc("text.txt")

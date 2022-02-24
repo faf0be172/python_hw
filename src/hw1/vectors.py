@@ -22,7 +22,7 @@ def get_norm(vector):
     if type(vector) not in [tuple, list]:
         raise TypeError("Vector must be list or tuple")
     try:
-        vector_norm = sum([x ** 2 for x in vector]) ** 0.5
+        vector_norm = sum([x**2 for x in vector]) ** 0.5
     except TypeError as error:
         raise ArithmeticError("Values inside could not be multiplied") from error
     else:
@@ -40,8 +40,7 @@ def get_angle(vector_a, vector_b):
         raise IndexError("Vectors dimensions are not equal")
 
     try:
-        cosine = get_inner_product(vector_a, vector_b) / \
-                 (get_norm(vector_a) * get_norm(vector_b))
+        cosine = get_inner_product(vector_a, vector_b) / (get_norm(vector_a) * get_norm(vector_b))
         assert -1 <= cosine <= 1, "Cosine limit exceeded"
         angle = math.acos(cosine)
 
@@ -52,7 +51,7 @@ def get_angle(vector_a, vector_b):
         return angle
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     a = (1, 1.3, 3)
     b = [4, 5, 6]
     print(get_inner_product(a, b))

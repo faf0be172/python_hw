@@ -2,7 +2,7 @@ from typing import Callable
 
 
 def curry_explicit(func: Callable, arity: int) -> Callable:
-    """:return: Curried function with arity = 1  """
+    """:return: Curried function with arity = 1"""
 
     if arity < 0:
         raise TypeError("Negative arity forbidden")

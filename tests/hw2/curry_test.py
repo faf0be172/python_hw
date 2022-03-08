@@ -8,7 +8,7 @@ from typing import Callable
     [
         (lambda x, y, z: f"<{x},{y},{z}>", (123, 456, 562), 3, "<123,456,562>"),
         (max, (10, 11), 2, 11),
-        (len, ([1, 2],), 1, 2)
+        (len, ([1, 2],), 1, 2),
     ],
 )
 def test_currying(func: Callable, args: tuple, arity: int, expected):
@@ -23,7 +23,7 @@ def test_currying(func: Callable, args: tuple, arity: int, expected):
     [
         (lambda x, y, z: f"<{x},{y},{z}>", (123, 456, 562), 3, "<123,456,562>"),
         (max, (10, 11), 2, 11),
-        (len, ([1, 2],), 1, 2)
+        (len, ([1, 2],), 1, 2),
     ],
 )
 def test_uncurrying(func: Callable, args: tuple, arity: int, expected):

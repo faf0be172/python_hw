@@ -26,7 +26,7 @@ async def get_image_by_link():
 
     async with ClientSession() as session:
         async with session.get(image_link) as resp:
-            with open(f"images/{image_key}.jpg", mode='wb') as fp:
+            with open(f"images/{image_key}.jpg", mode="wb") as fp:
                 async with async_open(fp) as image:
                     await image.write(await resp.read())
 

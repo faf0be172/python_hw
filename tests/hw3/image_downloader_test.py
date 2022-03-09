@@ -18,6 +18,7 @@ def test_simple_downloading():
         raise AssertionError("Images number is incorrect")
     else:
         clear_images_directory()
+        os.rmdir("images")
 
 
 def test_negative_images_number():
@@ -29,6 +30,7 @@ def test_host_connection_error():
     try:
         download_some_images(3)
         clear_images_directory()
+        os.rmdir("images")
     except ClientConnectorError:
         raise AssertionError("Cannot connect to host")
 
@@ -37,5 +39,6 @@ def test_image_key_not_found_error():
     try:
         download_some_images(3)
         clear_images_directory()
+        os.rmdir("images")
     except ValueError:
         raise AssertionError("Image link missed")

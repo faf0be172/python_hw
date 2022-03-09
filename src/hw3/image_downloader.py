@@ -1,5 +1,7 @@
+import os
 import re
 import asyncio
+from pathlib import Path
 from aiohttp import ClientSession
 from aiofile import async_open
 from bs4 import BeautifulSoup
@@ -26,6 +28,9 @@ async def get_image_by_link():
 
     async with ClientSession() as session:
         async with session.get(image_link) as resp:
+            if not Path("images").exists():
+                os.mkdir("images")
+
             with open(f"images/{image_key}.jpg", mode="wb") as fp:
                 async with async_open(fp) as image:
                     await image.write(await resp.read())

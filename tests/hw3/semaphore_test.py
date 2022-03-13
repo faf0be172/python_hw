@@ -15,10 +15,8 @@ def change_pair(dictionary: SafelyMultithreadingDict, key: str, diff: int):
 def test_multithreaded_creating_pairs():
     testing_dict = SafelyMultithreadingDict()
     threads = [
-        Thread(
-            target=replace_or_create_pair,
-            args=(testing_dict, f"key_{number}", number ** 2)
-        ) for number in range(1, 6)
+        Thread(target=replace_or_create_pair, args=(testing_dict, f"key_{number}", number**2))
+        for number in range(1, 6)
     ]
 
     for thread in threads:
@@ -29,7 +27,7 @@ def test_multithreaded_creating_pairs():
 
     with testing_dict.modify_safely() as d:
         for number in range(1, 6):
-            assert d[f"key_{number}"] == number ** 2
+            assert d[f"key_{number}"] == number**2
 
 
 def test_multithreading_change_pair():
@@ -37,11 +35,7 @@ def test_multithreading_change_pair():
     replace_or_create_pair(testing_dict, "key_1", 0)
 
     threads = [
-        Thread(
-            target=change_pair,
-            args=(testing_dict, "key_1", number * 2)
-        ) for number in range(1, 6)
-    ]
+        Thread(target=change_pair, args=(testing_dict, "key_1", number * 2)) for number in range(1, 6)]
 
     for thread in threads:
         thread.start()

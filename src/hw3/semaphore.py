@@ -3,7 +3,6 @@ from threading import Lock
 
 
 class SafelyMultithreadingDict:
-
     def __init__(self):
         self._dict = {}
         self._locker = Lock()

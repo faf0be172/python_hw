@@ -10,9 +10,9 @@ class CartesianTree:
 
     def __generate_child(self, available_nodes: list, parent):
         """
-            General complexity: O(n*log(n))
+        General complexity: O(n*log(n))
 
-            :return: Generated child node with its child nodes.
+        :return: Generated child node with its child nodes.
         """
 
         if not available_nodes:

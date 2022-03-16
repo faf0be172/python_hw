@@ -20,8 +20,8 @@ class CartesianTree:
 
         node = Node(*max(available_nodes, key=lambda x: x[1]))
 
-        left_part = available_nodes[:available_nodes.index((node.key, node.priority))]
-        right_part = available_nodes[available_nodes.index((node.key, node.priority)) + 1:]
+        left_part = available_nodes[: available_nodes.index((node.key, node.priority))]
+        right_part = available_nodes[available_nodes.index((node.key, node.priority)) + 1 :]
 
         node.left_child = self.__generate_child(left_part, node)
         node.right_child = self.__generate_child(right_part, node)
@@ -30,15 +30,15 @@ class CartesianTree:
 
     def __iter__(self):
         """
-            Refresh local iterator by setting root node to the first element in sequence.
+        Refresh local iterator by setting root node to the first element in sequence.
 
-            :return: Refreshed instance.
+        :return: Refreshed instance.
         """
 
         def visit_children(node: Node):
             """
-                :param node: Current node in NLR traversal.
-                :return: Generator of NLR-traversal nodes sequence.
+            :param node: Current node in NLR traversal.
+            :return: Generator of NLR-traversal nodes sequence.
             """
             if node:
                 yield node

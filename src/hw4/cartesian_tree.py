@@ -40,9 +40,10 @@ class CartesianTree:
             :param node: Current node in NLR traversal.
             :return: Generator of NLR-traversal nodes sequence.
             """
-            if node:
-                yield node
+            yield node
+            if node.left_child:
                 yield from visit_children(node.left_child)
+            if node.right_child:
                 yield from visit_children(node.right_child)
 
         self.__iterator = visit_children(self.__root)

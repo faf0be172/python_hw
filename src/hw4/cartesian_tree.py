@@ -58,19 +58,20 @@ class CartesianTree:
         """
 
         def find_key(node: Node) -> bool:
-            if key == node.key:
-                return True
             if key > node.key:
                 if node.right_child:
                     return find_key(node.right_child)
                 else:
                     return False
 
-            if key < node.key:
+            elif key < node.key:
                 if node.left_child:
                     return find_key(node.left_child)
                 else:
                     return False
+
+            else:
+                return True
 
         return find_key(self.__root)
 

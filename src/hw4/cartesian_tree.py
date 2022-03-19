@@ -56,6 +56,7 @@ class CartesianTree:
         """
         Complexity: O(log(n))
         """
+
         def find_key(node: Node) -> bool:
             if key == node.key:
                 return True

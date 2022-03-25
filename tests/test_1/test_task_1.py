@@ -3,6 +3,7 @@ from src.test_1.task_1 import print_usage_statistic, Spy
 
 
 def test_func_not_decorated():
+
     with pytest.raises(ValueError):
         def foo():
             return "abc"

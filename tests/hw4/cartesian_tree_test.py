@@ -86,7 +86,7 @@ def test_complex_interaction():
     del tree[25]
     tree[25] = "h"
 
-    assert list(iter(tree)) == [(5, 'd'), (15, 'b'), (20, 'e'), (25, 'h')]
+    assert list(iter(tree)) == [(5, "d"), (15, "b"), (20, "e"), (25, "h")]
 
     del tree[5]
     del tree[15]

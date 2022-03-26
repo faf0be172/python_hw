@@ -99,7 +99,7 @@ class CartesianTree:
                 node = Node(*max(available_nodes, key=lambda x: x[2]))
 
                 left_part = available_nodes[: available_nodes.index((node.key, node.value, node.priority))]
-                right_part = available_nodes[available_nodes.index((node.key, node.value, node.priority)) + 1:]
+                right_part = available_nodes[available_nodes.index((node.key, node.value, node.priority)) + 1 :]
 
                 node.left_child = generate_child(left_part)
                 node.right_child = generate_child(right_part)
@@ -137,6 +137,7 @@ class CartesianTree:
                 entry.value = value
 
             else:
+
                 def insert(node: Node):
                     left, right = Node.split(self._root, node.key)
                     self._root = Node.merge(Node.merge(left, node), right)
@@ -152,6 +153,7 @@ class CartesianTree:
         node = self._root.find_node(key)
 
         if node:
+
             def delete():
                 left, right = Node.split(self._root, key)
                 self._root = Node.merge(left, right)

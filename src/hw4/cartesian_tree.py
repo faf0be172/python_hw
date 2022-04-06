@@ -120,7 +120,7 @@ class CartesianTree:
         self._size = 0
         self._root = None
 
-    def split(self, node: CartesianTreeNode, key: int) -> Tuple[Any, Any]:
+    def split(self, node, key: int) -> Tuple[Any, Any]:
         if node is None:
             return None, None
 

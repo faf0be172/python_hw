@@ -43,7 +43,6 @@ class CartesianTreeNode:
 
 
 class CartesianTree:
-
     def __init__(self, nodes_values=None, priority_limit: int = int(10e9)):
         if nodes_values is None:
             nodes_values = {}

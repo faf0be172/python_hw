@@ -3,10 +3,10 @@ from typing import Any, Tuple
 
 
 class CartesianTreeNode:
-    def __init__(self, key: int, value: Any, priorityLimit: int = int(10e9)):
+    def __init__(self, key: int, value: Any, priority_limit: int = int(10e9)):
         self.key = key
         self.value = value
-        self.priority = randint(1, priorityLimit)
+        self.priority = randint(1, priority_limit)
         self.left_child = None
         self.right_child = None
 
@@ -43,14 +43,14 @@ class CartesianTreeNode:
 
 
 class CartesianTree:
-    _MAX_TREE_KEY = int(10e9)
 
-    def __init__(self, nodes_values=None):
+    def __init__(self, nodes_values=None, priority_limit: int = int(10e9)):
         if nodes_values is None:
             nodes_values = {}
 
         self._size = 0
         self._root = None
+        self._priority_limit = priority_limit
 
         if len(nodes_values) > 0:
             for key, value in nodes_values.items():
@@ -85,28 +85,21 @@ class CartesianTree:
                 entry.value = value
 
             else:
-
-                def insert(node: CartesianTreeNode):
-                    left, right = self.split(self._root, node.key)
-                    self._root = self.merge(self.merge(left, node), right)
-
-                insert(CartesianTreeNode(key, value))
+                node = CartesianTreeNode(key, value, self._priority_limit)
+                left, right = self.split(self._root, node.key)
+                self._root = self.merge(self.merge(left, node), right)
                 self._size += 1
 
         else:
-            self._root = CartesianTreeNode(key, value)
+            self._root = CartesianTreeNode(key, value, self._priority_limit)
             self._size += 1
 
     def __delitem__(self, key: int):
         node = self._root.find_node(key)
 
         if node:
-
-            def delete():
-                left, right = self.split(self._root, key)
-                self._root = self.merge(left, right)
-
-            delete()
+            left, right = self.split(self._root, key)
+            self._root = self.merge(left, right)
             self._size -= 1
 
         else:

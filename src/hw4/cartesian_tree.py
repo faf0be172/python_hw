@@ -1,5 +1,5 @@
 from random import randint
-from typing import Any, Tuple
+from typing import Any, Tuple, Optional
 
 
 class CartesianTreeNode:
@@ -48,7 +48,7 @@ class CartesianTree:
             nodes_values = {}
 
         self._size = 0
-        self._root = None
+        self._root: Optional[CartesianTreeNode] = None
         self._priority_limit = priority_limit
 
         if len(nodes_values) > 0:
@@ -63,19 +63,23 @@ class CartesianTree:
             yield node.key, node.value
 
     def __contains__(self, key: int):
-        node = self._root.find_node(key)
-        return node is not None
+        if self._root:
+            node = self._root.find_node(key)
+            return node is not None
+        else:
+            return False
 
     def __len__(self):
         return self._size
 
     def __getitem__(self, key: int):
-        node = self._root.find_node(key)
-
-        if node is None:
-            raise KeyError(f"Key {key} not found")
-
-        return node.value
+        if self._root:
+            node = self._root.find_node(key)
+            if node is None:
+                raise KeyError(f"Key {key} not found")
+            return node.value
+        else:
+            raise KeyError(f"Key {key} not found, tree is empty")
 
     def __setitem__(self, key: int, value: Any):
         if self._root:
@@ -94,15 +98,17 @@ class CartesianTree:
             self._size += 1
 
     def __delitem__(self, key: int):
-        node = self._root.find_node(key)
-
-        if node:
-            left, right = self.split(self._root, key)
-            self._root = self.merge(left, right)
-            self._size -= 1
+        if self._root:
+            node = self._root.find_node(key)
+            if node:
+                left, right = self.split(self._root, key)
+                self._root = self.merge(left, right)
+                self._size -= 1
+            else:
+                raise KeyError(f"Key '{key}' not found")
 
         else:
-            raise KeyError(f"Key '{key}' not found")
+            raise KeyError(f"Key '{key}' not found, tree is empty")
 
     def __repr__(self):
         items = [f"{key}: {repr(value)}" for key, value in self]

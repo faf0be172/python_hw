@@ -1,5 +1,6 @@
 from numbers import Number
-from typing import Sequence, List
+from typing import List
+from collections.abc import Sequence
 
 
 def validate_matrix(matrix: Sequence[Sequence[Number]]):

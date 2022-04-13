@@ -1,6 +1,6 @@
 import math
 from numbers import Real, Complex
-from typing import Sequence
+from collections.abc import Sequence
 
 
 def get_inner_product(vector_a: Sequence[Real | Complex], vector_b: Sequence[Real | Complex]):

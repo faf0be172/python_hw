@@ -1,13 +1,12 @@
-from numbers import Number
 from typing import List
 from collections.abc import Sequence
 
 
-def validate_matrix(matrix: Sequence[Sequence[Number]]):
+def validate_matrix(matrix: Sequence[Sequence]):
     assert len({len(row) for row in matrix}) == 1, "Matrix is invalid"
 
 
-def get_transpose(matrix: Sequence[Sequence[Number]]) -> List[List[Number]]:
+def get_transpose(matrix: Sequence[Sequence]) -> List[List]:
     validate_matrix(matrix)
     transposed_matrix = [list(row) for row in list(zip(*matrix))]
     validate_matrix(transposed_matrix)
@@ -17,7 +16,7 @@ def get_transpose(matrix: Sequence[Sequence[Number]]) -> List[List[Number]]:
     return transposed_matrix
 
 
-def get_matrices_sum(matrix_a: Sequence[Sequence[Number]], matrix_b: Sequence[Sequence[Number]]) -> List[List[Number]]:
+def get_matrices_sum(matrix_a: Sequence[Sequence], matrix_b: Sequence[Sequence]) -> List[List]:
     validate_matrix(matrix_a)
     validate_matrix(matrix_b)
 
@@ -31,8 +30,7 @@ def get_matrices_sum(matrix_a: Sequence[Sequence[Number]], matrix_b: Sequence[Se
         raise TypeError("Matrices dimensions are not equal")
 
 
-def get_matrices_product(matrix_a: Sequence[Sequence[Number]], matrix_b: Sequence[Sequence[Number]]) -> \
-        List[List[Number]]:
+def get_matrices_product(matrix_a: Sequence[Sequence], matrix_b: Sequence[Sequence]) -> List[List]:
     validate_matrix(matrix_a)
     validate_matrix(matrix_b)
 

@@ -21,7 +21,7 @@ def tail(filename: str, rows: int = 10):
         for _ in range(str_count - rows):
             next(file_iter)
         for line in file_iter:
-            print(line, end='')
+            print(line, end="")
         print()
 
 

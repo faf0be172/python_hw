@@ -11,8 +11,9 @@ def get_transpose(matrix: Sequence[Sequence]) -> List[List]:
     transposed_matrix = [list(row) for row in list(zip(*matrix))]
     validate_matrix(transposed_matrix)
 
-    assert len(transposed_matrix) == len(matrix[0]) and len(transposed_matrix[0]) == len(matrix), \
-        "Result matrix dimension is invalid"
+    assert len(transposed_matrix) == len(matrix[0]) and len(transposed_matrix[0]) == len(
+        matrix
+    ), "Result matrix dimension is invalid"
     return transposed_matrix
 
 

@@ -1,5 +1,5 @@
 from collections import Counter
-from typing import Tuple, Dict
+from typing import Tuple, Dict, List
 
 
 def process_file(filename: str) -> Tuple:
@@ -31,6 +31,7 @@ def get_statistics(top_words_number: int = 10, filename: str = "text.txt"):
     with open("statistics.txt", "a") as stat_file:
         stat_file.write(f"Number of words: {len(words_dict)}\n")
         stat_file.write(f"Top {top_words_number} words:\n")
-        for elm in Counter(words_dict).most_common(top_words_number):
+        most_common_words: List[Tuple[str, int]] = Counter(words_dict).most_common(top_words_number)
+        for elm in most_common_words:
             stat_file.write(f"{elm[0]} : {elm[1]}\n")
         stat_file.write(f"Number of sentences: {sentences_cnt}\n")

@@ -1,10 +1,10 @@
 from collections import Counter
-from typing import Tuple
+from typing import Tuple, Dict
 
 
 def process_file(filename: str) -> Tuple:
     sentences_cnt = 0
-    words_dict = {}
+    words_dict: Dict[str, int] = {}
 
     with open(filename) as file:
         for line in file:

@@ -8,7 +8,7 @@ def process_file(filename: str) -> Tuple:
 
     with open(filename) as file:
         for line in file:
-            sentences_cnt += line.count(".")
+            sentences_cnt += line.count(". ") + line.count(".\n")
             for word in line.split():
                 word = word.lower()
                 while not word[-1].isalpha():

@@ -12,11 +12,15 @@ def process_quicksort(sorting_list: List, algo_conn):
     intermediate_elm = sorting_list.pop(random.randint(0, len(sorting_list) - 1))
 
     local_conn_left, algo_conn_left = Pipe()
-    left_process = Process(target=process_quicksort, args=([x for x in sorting_list if x < intermediate_elm], algo_conn_left))
+    left_process = Process(
+        target=process_quicksort, args=([x for x in sorting_list if x < intermediate_elm], algo_conn_left)
+    )
     left_process.start()
 
     local_conn_right, algo_conn_right = Pipe()
-    right_process = Process(target=process_quicksort, args=([x for x in sorting_list if x >= intermediate_elm], algo_conn_right))
+    right_process = Process(
+        target=process_quicksort, args=([x for x in sorting_list if x >= intermediate_elm], algo_conn_right)
+    )
     right_process.start()
 
     sorted_list = local_conn_left.recv()

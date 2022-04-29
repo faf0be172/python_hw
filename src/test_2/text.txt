@@ -1,0 +1,9 @@
+This line graph shows trends in use of social networking sites from 2005 to 2012 by age group. Rhomboid-shaped line is responsible for the 18-29 years age group, the cube-shaped line is responsible for the 30-54 years age group, and the dotted one – for people over 55 years old.
+
+At the beginning of 2005 there were less than 9% of people who use social networks sites. But throughout the next year the younger audience of social networks in age from 18 to 29 rose to 50%. After this significant growth, the number of users in this age group continued to grow and reached a peak of 87% in 2011 and then slowly declined to 83%.
+
+The audience of social networks in age from 30 to 54 demonstrated the most steady growth from 2005 to 2012. The peak was reached in 2012 – it was about 78% of people in this age group who used social networking sites.
+
+The audience of people over 55 years as well as the previous age group reached a peak in 2012, but growth wasn’t steady: in 2006 audience reached a minimum – only about 4% of people in age over 55 used social networks.
+
+Overall, since 2005 more and more people in every age group began to use social networking sites.

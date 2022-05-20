@@ -17,18 +17,18 @@ def test_sample():
                 html.p("Третья строка.")
 
     assert (
-            html.generate()
-             == "<html>\n"
-             + "  <body>\n"
-             + "    <div>\n"
-             + "      <div>\n"
-             + "        <p>Первая строка.</p>\n"
-             + "        <p>Вторая строка.</p>\n"
-             + "      </div>\n"
-             + "      <div>\n"
-             + "        <p>Третья строка.</p>\n"
-             + "      </div>\n"
-             + "    </div>\n"
-             + "  </body>\n"
-             + "</html>\n"
-            )
+        html.generate()
+         == "<html>\n"
+         + "  <body>\n"
+         + "    <div>\n"
+         + "      <div>\n"
+         + "        <p>Первая строка.</p>\n"
+         + "        <p>Вторая строка.</p>\n"
+         + "      </div>\n"
+         + "      <div>\n"
+         + "        <p>Третья строка.</p>\n"
+         + "      </div>\n"
+         + "    </div>\n"
+         + "  </body>\n"
+         + "</html>\n"
+    )

@@ -14,15 +14,15 @@ class HTMLTag(HTMLElement):
         super().__init__(tag_name, level)
 
     @contextmanager
-    def execute_tag(self):
-        print('  ' * self.level + f'<{self.tag_name}>', end='')
+    def execute_tag(self, document):
+        document.doc += "  " * self.level + f"<{self.tag_name}>"
         if self.children:
-            print()
+            document.doc += "\n"
         yield self
         if self.children:
-            print('  ' * self.level + f'</{self.tag_name}>')
+            document.doc += "  " * self.level + f"</{self.tag_name}>\n"
         else:
-            print(f'</{self.tag_name}>')
+            document.doc += f"</{self.tag_name}>\n"
 
 
 class HTMLString(HTMLElement):
@@ -31,48 +31,47 @@ class HTMLString(HTMLElement):
         self.innerText = inner_text
 
     @contextmanager
-    def execute_tag(self):
-        print('  ' * self.level + f'<{self.tag_name}>{self.innerText}</{self.tag_name}>')
+    def execute_tag(self, document):
+        document.doc += "  " * self.level + f"<{self.tag_name}>{self.innerText}</{self.tag_name}>\n"
         yield self
 
 
 class HTML:
     def __init__(self):
-        self.root = HTMLTag(tag_name='html')
+        self.root = HTMLTag(tag_name="html")
         self.current_tag = self.root
+        self.doc = ""
+
+    def _add_tag(self, tag_name):
+        tag = HTMLTag(tag_name=tag_name, level=self.current_tag.level + 1)
+        tag.parent = self.current_tag
+        self.current_tag.children.append(tag)
+        copy = tag.parent
+        self.current_tag = tag
+        yield self
+        self.current_tag = copy
 
     @contextmanager
     def body(self):
-        body_tag = HTMLTag(tag_name='body', level=self.current_tag.level + 1)
-        body_tag.parent = self.current_tag
-        self.current_tag.children.append(body_tag)
-        copy = body_tag.parent
-        self.current_tag = body_tag
-        yield self
-        self.current_tag = copy
+        yield from self._add_tag("body")
 
     @contextmanager
     def div(self):
-        div_tag = HTMLTag(tag_name='div', level=self.current_tag.level + 1)
-        div_tag.parent = self.current_tag
-        self.current_tag.children.append(div_tag)
-        copy = div_tag.parent
-        self.current_tag = div_tag
-        yield self
-        self.current_tag = copy
+        yield from self._add_tag("div")
 
     def p(self, inner_text=''):
-        p_tag = HTMLString(tag_name='p', inner_text=inner_text, level=self.current_tag.level + 1)
+        p_tag = HTMLString(tag_name="p", inner_text=inner_text, level=self.current_tag.level + 1)
         p_tag.parent = self.current_tag
         self.current_tag.children.append(p_tag)
 
     def generate(self):
         def dfs(node):
-            with node.execute_tag() as tag:
+            with node.execute_tag(self) as tag:
                 for child in tag.children:
                     dfs(child)
 
         dfs(self.root)
+        return self.doc
 
 
 html = HTML()
@@ -83,4 +82,4 @@ with html.body():
             html.p("Вторая строка.")
         with html.div():
             html.p("Третья строка.")
-html.generate()
+print(html.generate())

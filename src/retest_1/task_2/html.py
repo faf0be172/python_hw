@@ -26,7 +26,7 @@ class HTMLTag(HTMLElement):
 
 
 class HTMLString(HTMLElement):
-    def __init__(self, tag_name, inner_text='', level=0):
+    def __init__(self, tag_name, inner_text="", level=0):
         super().__init__(tag_name, level)
         self.innerText = inner_text
 
@@ -59,7 +59,7 @@ class HTML:
     def div(self):
         yield from self._add_tag("div")
 
-    def p(self, inner_text=''):
+    def p(self, inner_text=""):
         p_tag = HTMLString(tag_name="p", inner_text=inner_text, level=self.current_tag.level + 1)
         p_tag.parent = self.current_tag
         self.current_tag.children.append(p_tag)

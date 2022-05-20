@@ -5,6 +5,7 @@ def test_empty_doc():
     html = HTML()
     assert html.generate() == "<html></html>\n"
 
+
 def test_sample():
     html = HTML()
     with html.body():
@@ -15,17 +16,19 @@ def test_sample():
             with html.div():
                 html.p("Третья строка.")
 
-    assert html.generate() == \
-           "<html>\n" \
-           + "  <body>\n" \
-           + "    <div>\n" \
-           + "      <div>\n" \
-           + "        <p>Первая строка.</p>\n" \
-           + "        <p>Вторая строка.</p>\n" \
-           + "      </div>\n" \
-           + "      <div>\n" \
-           + "        <p>Третья строка.</p>\n" \
-           + "      </div>\n" \
-           + "    </div>\n" \
-           + "  </body>\n" \
-           + "</html>\n"
+    assert (
+            html.generate()
+             == "<html>\n"
+             + "  <body>\n"
+             + "    <div>\n"
+             + "      <div>\n"
+             + "        <p>Первая строка.</p>\n"
+             + "        <p>Вторая строка.</p>\n"
+             + "      </div>\n"
+             + "      <div>\n"
+             + "        <p>Третья строка.</p>\n"
+             + "      </div>\n"
+             + "    </div>\n"
+             + "  </body>\n"
+             + "</html>\n"
+            )

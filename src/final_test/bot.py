@@ -2,7 +2,6 @@ import os
 from telegram.ext import Updater, CallbackContext, CommandHandler, MessageHandler, Filters
 import logging
 from telegram import Update
-
 from src.final_test.painter import ml_paint_image
 
 updater = Updater(token=os.environ['telegram_bot_token'], use_context=True)
@@ -12,7 +11,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 
 def start(update: Update, context: CallbackContext):
-    context.bot.send_message(chat_id=update.effective_chat.id,
+    if update.effective_chat.id:
+        context.bot.send_message(chat_id=update.effective_chat.id,
                              text="This bot can paint your black-white .jpeg pictures, just try it.")
 
 

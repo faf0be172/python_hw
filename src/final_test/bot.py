@@ -10,18 +10,17 @@ dispatcher = updater.dispatcher
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
-def start(update: Update, context: CallbackContext):
-    if update.effective_chat.id:
-        context.bot.send_message(chat_id=update.effective_chat.id,
+def start(update, context: CallbackContext):
+    context.bot.send_message(chat_id=update.effective_chat.id,
                              text="This bot can paint your black-white .jpeg pictures, just try it.")
 
 
-def unknown(update, context):
+def unknown(update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Sorry, I didn't understand this command.")
 
 
-def paint_image(update, context):
+def paint_image(update, context: CallbackContext):
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text="Wait a moment, picture is processing...")
     images = update.message.photo

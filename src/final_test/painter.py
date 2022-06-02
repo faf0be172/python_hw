@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-from colorization.colorizers import *
+import torch
+from custom_modules.colorization.colorizers import siggraph17, load_img, preprocess_img, postprocess_tens
 
 
 def ml_paint_image(chat_id):

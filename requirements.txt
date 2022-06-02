@@ -1,13 +1,13 @@
 black==22.3.0
-mypy==0.942
-pytest==7.1.1
+mypy==0.960
+pytest==7.1.2
 
 python-telegram-bot==13.12
 requests==2.27.1
 urllib3==1.26.9
 telegram>=0.0.1
 Pillow>=9.1.1
-argparse
 torch
 numpy
 matplotlib
+scikit-image

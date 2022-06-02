@@ -17,9 +17,7 @@ def start(update, context: CallbackContext):
 
 
 def unknown(update, context: CallbackContext):
-    context.bot.send_message(
-        chat_id=update.effective_chat.id, text="Sorry, I didn't understand this command."
-    )
+    context.bot.send_message(chat_id=update.effective_chat.id, text="Sorry, I didn't understand this command.")
 
 
 def paint_image(update, context: CallbackContext):
@@ -28,8 +26,9 @@ def paint_image(update, context: CallbackContext):
     image = context.bot.get_file(images[-1])
     image.download(f"{update.effective_chat.username}_loaded_image.jpg")
     ml_paint_image(update.effective_chat.username)
-    context.bot.send_photo(chat_id=update.effective_chat.id,
-                           photo=open(f"{update.effective_chat.username}_painted_image.png", "rb"))
+    context.bot.send_photo(
+        chat_id=update.effective_chat.id, photo=open(f"{update.effective_chat.username}_painted_image.png", "rb")
+    )
 
 
 start_handler = CommandHandler("start", start)

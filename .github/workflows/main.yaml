@@ -36,4 +36,5 @@ jobs:
 
     - name: Lint with Black
       run: |
-        black . --check --diff -l 120
+        black src --check --diff -l 120
+        black tests --check --diff -l 120
